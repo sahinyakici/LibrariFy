@@ -1,0 +1,30 @@
+<div *ngIf="dataLoaded==false" class="spinner-grow text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<table *ngIf="dataLoaded==true" class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Kitap Adı</th>
+      <th>Tür adı</th>
+      <th>Yazar Adı</th>
+      <th>Kitap Sahibi</th>
+      <th>Lokasyon</th>
+      <th>Sayfa Sayısı</th>
+      <th>Kiralama Durum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.bookId }}</td>
+      <td>{{ book.bookName }}</td>
+      <td>{{ book.genreName }}</td>
+      <td>{{ book.authorName }}</td>
+      <td>{{ book.ownerName }}</td>
+      <td>{{ book.location }}</td>
+      <td>{{ book.pageSize }}</td>
+      <td>{{ book.rentStatus }}</td>
+    </tr>
+  </tbody>
+</table>
