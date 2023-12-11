@@ -1,0 +1,116 @@
+.ownerNameText {
+  color: #8668fd;
+  font-family: Lexend;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: absolute;
+  top: 200px;
+  left: 20px;
+}
+
+.genreNameText {
+  color: #8668fd;
+  font-family: Lexend;
+  font-size: 16px;
+  font-style: normal;
+  position: absolute;
+  font-weight: 400;
+  line-height: normal;
+  top: 200px;
+  right: 20px;
+}
+
+.bookNameText {
+  color: #000;
+  font-family: Lexend;
+  font-size: 16px;
+  font-style: normal;
+  position: absolute;
+  font-weight: 400;
+  line-height: normal;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.authorNameText {
+  color: #000;
+  font-family: Lexend;
+  font-size: 16px;
+  font-style: normal;
+  position: absolute;
+  font-weight: 400;
+  line-height: normal;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.priceText {
+  color: #000;
+  font-family: Lexend;
+  font-size: 16px;
+  font-style: normal;
+  position: absolute;
+  font-weight: 400;
+  line-height: normal;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card {
+  width: 280px;
+  height: 400px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 5px solid #8e8ffa;
+  background: #f9f9fa;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 10px; /* İstediğiniz boşluk değeri */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.float-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #190482;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  line-height: 1.9;
+  cursor: pointer;
+}
+
+.float-button:hover {
+  background-color: #0056b3;
+}
+
+.picture {
+  width: 280px;
+  height: 200px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
