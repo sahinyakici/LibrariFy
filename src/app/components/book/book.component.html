@@ -1,30 +1,45 @@
-<div *ngIf="dataLoaded==false" class="spinner-grow text-primary" role="status">
+<link rel="stylesheet" href="./book.component.css" />
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-grow text-primary"
+  role="status"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
 
-<table *ngIf="dataLoaded==true" class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Kitap Adı</th>
-      <th>Tür adı</th>
-      <th>Yazar Adı</th>
-      <th>Kitap Sahibi</th>
-      <th>Lokasyon</th>
-      <th>Sayfa Sayısı</th>
-      <th>Kiralama Durum</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books">
-      <td>{{ book.bookId }}</td>
-      <td>{{ book.bookName }}</td>
-      <td>{{ book.genreName }}</td>
-      <td>{{ book.authorName }}</td>
-      <td>{{ book.ownerName }}</td>
-      <td>{{ book.location }}</td>
-      <td>{{ book.pageSize }}</td>
-      <td>{{ book.rentStatus }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let book of books" class="col">
+    <div class="card" style="width: 18rem">
+      <img src="{{book.imagePath}}" class="card-img-top picture" alt="...">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p class="card-text ownerNameText">{{ book.ownerName }}</p>
+          </div>
+          <div class="col">
+            <p class="card-text genreNameText">{{ book.genreName }}</p>
+          </div>
+        </div>
+        <div class="col">
+          <p class="card-text bookNameText">{{ book.bookName }}</p>
+        </div>
+        <div class="col">
+          <p class="card-text authorNameText">{{ book.authorName }}</p>
+        </div>
+        <div class="col">
+          <p class="card-text priceText">{{ book.money }}₺</p>
+        </div>
+        <div class="col">
+          <button class="icon-button">
+            <img
+              src="../../../assets/images/Add-to-cart.png"
+              alt="Icon"
+              class="icon-image"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="float-button">+</button>
