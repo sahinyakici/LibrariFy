@@ -1,0 +1,59 @@
+.navbar {
+    border-radius: 0px 0px 30px 30px;
+    background-color: #7653fe;
+  }
+  
+  .navbar-brand {
+    color: #000;
+    text-align: center;
+    font-family: Jockey One;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .nav-item {
+    color: #000;
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .form-control {
+    border-radius: 45px;
+    background: #8e8ffa;
+    
+  }
+  
+  .btn {
+    border-radius: 45px 45px 45px 45px;
+    background: url("../../../assets/images/search-icon.png") transparent 50% / 20px
+      20px no-repeat;
+  }
+  
+  .btn-shopping-card {
+    width: 40px;
+    height: 40px;
+    background: url("../../../assets/images/shopping-cart.png") transparent 50% / 30px
+      30px no-repeat;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .btn-user {
+    width: 40px;
+    height: 40px;
+    background: url("../../../assets/images/user.png") transparent 50% / 30px 30px
+      no-repeat;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .search-model{
+  width: 25px;
+  }
