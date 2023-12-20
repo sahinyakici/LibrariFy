@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', component: BookComponent },
   { path: 'books', component: BookComponent },
   { path: 'books/:bookId', component: BookComponent },
+  { path: 'genres/:genreId', component: BookComponent }
 ];
 
 @NgModule({

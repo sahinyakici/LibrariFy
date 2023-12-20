@@ -22,4 +22,9 @@ export class BookService {
     let newPath = this.apiUrl + 'books/getbyid?guid=' + bookId;
     return this.httpClient.get<SingleResponseModel<Book>>(newPath);
   }
+
+  getBooksByGenre(genreId:string){
+    let newPath=this.apiUrl+'books/getallbygenre?id='+genreId;
+    return this.httpClient.get<ListReponseModel<Book>>(newPath);
+  }
 }

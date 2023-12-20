@@ -1,5 +1,5 @@
 export interface Genre {
-  genreId: string;
-  genreName: string;
-  bookCount: number;
+  genreId?: string | undefined;
+  genreName?: string | undefined;
+  bookCount?: number | undefined;
 }
