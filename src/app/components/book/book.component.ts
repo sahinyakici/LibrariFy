@@ -1,7 +1,9 @@
+import { SharedService } from './../../services/shared.service';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from '../../models/entityModels/book';
 import { BookService } from './../../services/book.service';
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-book',
@@ -11,7 +13,9 @@ import { Component, OnInit } from '@angular/core';
 export class BookComponent implements OnInit {
   constructor(
     private bookService: BookService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private sharedService: SharedService,
+    private cartService: CartService
   ) {}
 
   books: Book[] = [];
@@ -19,11 +23,17 @@ export class BookComponent implements OnInit {
   message: string = '';
   success: boolean = false;
   dataLoaded: boolean = false;
+  filterText: string = '';
 
   ngOnInit(): void {
+    this.sharedService.filterText$.subscribe((filterText) => {
+      this.filterText = filterText;
+    });
     this.activatedRoute.params.subscribe((params) => {
       if (params['bookId']) {
         this.getBooksById(params['bookId']);
+      } else if (params['genreId']) {
+        this.getBooksByGenre(params['genreId']);
       } else {
         this.getBooks();
       }
@@ -41,10 +51,24 @@ export class BookComponent implements OnInit {
 
   getBooksById(bookId: string) {
     this.bookService.getBooksById(bookId).subscribe((response) => {
-      this.books.push(response.data)
+      this.books.push(response.data);
       this.message = response.message;
       this.success = response.success;
       this.dataLoaded = true;
     });
+  }
+
+  getBooksByGenre(genreId: string) {
+    this.dataLoaded = false;
+    this.bookService.getBooksByGenre(genreId).subscribe((response) => {
+      this.books = response.data;
+      this.message = response.message;
+      this.success = response.success;
+      this.dataLoaded = true;
+    });
+  }
+
+  addToCart(book: Book) {
+    this.cartService.addToCart(book);
   }
 }

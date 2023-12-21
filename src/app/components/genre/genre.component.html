@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="./genre.component.css" />
-<ul *ngIf="dataLoaded" class="list-group">
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li (click)="setAllGenreClass()" routerLink="" [ngClass]="getAllGenreClass()">Tüm Türler<span class="badge rounded-pill">{{ allBookCount }}</span></li>
   <li
     *ngFor="let genre of genres"
-    class="list-group-item d-flex justify-content-between align-items-center"
+    (click)="setCurrentGenre(genre)"
+    routerLink="/genres/{{genre.genreId}}/"
+    [ngClass]="getCurrentGenreClass(genre)"
   >
     {{ genre.genreName }}
     <span class="badge rounded-pill">{{ genre.bookCount }}</span>
