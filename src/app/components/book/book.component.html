@@ -6,48 +6,59 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div *ngFor="let book of books | filterPipe : filterText" class="col">
-    <div class="card" style="width: 18rem">
-      <img src="{{ book.imagePath }}" class="card-img-top picture" alt="..." />
-      <div class="card-body">
-        <div class="row">
-          <div class="col">
-            <p class="card-text ownerNameText">
-              {{ book.ownerName | uppercase }}
-            </p>
+<div class="row">
+  <div class="col-md-3"><app-genre></app-genre></div>
+  <div class="col-md-9">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let book of books | filterPipe : filterText" class="col">
+        <div class="card" style="width: 18rem">
+          <img
+            src="{{ book.imagePath }}"
+            class="card-img-top picture"
+            alt="..."
+          />
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="card-text ownerNameText">
+                  {{ book.ownerName | uppercase }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text genreNameText">
+                  {{ book.genreName | uppercase }}
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-text bookNameText">
+                {{ book.bookName | uppercase }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text authorNameText">
+                {{ book.authorName | uppercase }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text priceText">
+                {{ book.money | vatAdded : 8 | currency : "₺" }}(KDV dahil)
+              </p>
+            </div>
+            <div class="col">
+              <button class="icon-button" (click)="addToCart(book)">
+                <img
+                  src="../../../assets/images/Add-to-cart.png"
+                  alt="Icon"
+                  class="icon-image"
+                />
+              </button>
+            </div>
           </div>
-          <div class="col">
-            <p class="card-text genreNameText">
-              {{ book.genreName | uppercase }}
-            </p>
-          </div>
-        </div>
-        <div class="col">
-          <p class="card-text bookNameText">{{ book.bookName | uppercase }}</p>
-        </div>
-        <div class="col">
-          <p class="card-text authorNameText">
-            {{ book.authorName | uppercase }}
-          </p>
-        </div>
-        <div class="col">
-          <p class="card-text priceText">
-            {{ book.money | vatAdded : 8 | currency : "₺" }}(KDV dahil)
-          </p>
-        </div>
-        <div class="col">
-          <button class="icon-button" (click)="addToCart(book)">
-            <img
-              src="../../../assets/images/Add-to-cart.png"
-              alt="Icon"
-              class="icon-image"
-            />
-          </button>
         </div>
       </div>
     </div>
+    <button routerLink="/book/add" class="float-button">+</button>
+    <div class="col-md-9"></div>
   </div>
 </div>
-<button routerLink="/book/add" class="float-button">+</button>
