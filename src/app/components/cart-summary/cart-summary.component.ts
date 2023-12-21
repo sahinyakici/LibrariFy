@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from '../../models/entityModels/cartItem';
+import { CartService } from '../../services/cart.service';
+import { Book } from '../../models/entityModels/book';
 
 @Component({
   selector: 'app-cart-summary',
@@ -8,7 +10,16 @@ import { CartItem } from '../../models/entityModels/cartItem';
 })
 export class CartSummaryComponent implements OnInit {
   cartItems: CartItem[] = [];
-  constructor() {}
+  constructor(private cartService: CartService) {}
   ngOnInit(): void {
+    this.getCart();
+  }
+
+  getCart() {
+    this.cartItems = this.cartService.getCartItems();
+  }
+
+  removeFromCart(book: Book) {
+    this.cartService.removeFromCart(book);
   }
 }

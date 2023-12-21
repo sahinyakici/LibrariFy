@@ -3,8 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Book } from '../../models/entityModels/book';
 import { BookService } from './../../services/book.service';
 import { Component, OnInit } from '@angular/core';
-import { Console } from 'console';
-import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-book',
@@ -16,7 +15,7 @@ export class BookComponent implements OnInit {
     private bookService: BookService,
     private activatedRoute: ActivatedRoute,
     private sharedService: SharedService,
-    private toastrService: ToastrService
+    private cartService: CartService
   ) {}
 
   books: Book[] = [];
@@ -70,6 +69,6 @@ export class BookComponent implements OnInit {
   }
 
   addToCart(book: Book) {
-    this.toastrService.success('Sepete eklendi!', book.bookName);
+    this.cartService.addToCart(book);
   }
 }

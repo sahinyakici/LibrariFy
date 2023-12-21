@@ -1,5 +1,5 @@
 <button
-  *ngIf="cartItems.length == 0"
+  *ngIf="cartItems.length != 0"
   class="btn-shopping-card"
   type="submit"
   data-bs-toggle="dropdown"
@@ -7,7 +7,26 @@
 >
   <div class="dropdown">
     <ul class="dropdown-menu">
-      <li><a class="dropdown-item">asd</a></li>
+      <li *ngFor="let cartItem of cartItems" d-flex justify-content-between>
+        <div class="d-flex justify-content-between">
+          <a class="dropdown-item">
+            <span class="badge bg-success">{{
+              cartItem.book.money | currency : "₺"
+            }}</span>
+
+            {{ cartItem.book.bookName | uppercase }}
+
+            <span
+              (click)="removeFromCart(cartItem.book)"
+              class="badge bg-danger"
+              >Sil</span
+            >
+          </a>
+        </div>
+      </li>
+      <li class="col-12 text-center">
+        <a class="dropdown-item"></a>Sepete git
+      </li>
     </ul>
   </div>
 </button>
