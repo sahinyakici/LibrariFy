@@ -12,6 +12,7 @@ import { Author } from '../../models/entityModels/author';
 import { Book } from '../../models/entityModels/book';
 import { BookService } from '../../services/book.service';
 import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from '../../services/local-storage-service.service';
 
 @Component({
   selector: 'app-book-add',
@@ -33,7 +34,8 @@ export class BookAddComponent implements OnInit {
     private genreService: GenreService,
     private authorService: AuthorService,
     private bookService: BookService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private localStorageService:LocalStorageService
   ) {}
   ngOnInit(): void {
     this.getAllGenres();
@@ -44,7 +46,7 @@ export class BookAddComponent implements OnInit {
   createBookAddForm() {
     this.bookAddForm = this.formBuilder.group({
       bookName: ['', Validators.required],
-      money: [''],
+      money: [0],
       genreName: ['', Validators.required],
       authorName: ['', Validators.required],
       location: ['', Validators.required],
@@ -74,7 +76,8 @@ export class BookAddComponent implements OnInit {
   addBook() {
     if (this.bookAddForm.valid) {
       let bookModel: Book = Object.assign({}, this.bookAddForm.value);
-      bookModel.ownerName = 'sahinyakici';
+      bookModel.ownerName = this.localStorageService.getItem('userName');
+      bookModel.ownerUserName = bookModel.ownerName;
       this.bookAddProgres = true;
       this.bookService.addBook(bookModel, this.image).subscribe(
         (data) => {

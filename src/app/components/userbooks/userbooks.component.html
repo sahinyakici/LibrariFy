@@ -1,0 +1,60 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-grow text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="row">
+  <div class="col-md-9">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let book of books" class="col">
+        <div class="card" style="width: 18rem">
+          <img
+            src="{{ book.imagePath }}"
+            class="card-img-top picture"
+            alt="..."
+          />
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="card-text ownerNameText">
+                  {{ book.ownerName | uppercase | truncate : 12 }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text genreNameText">
+                  {{ book.genreName | uppercase | truncate : 12 }}
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-text bookNameText">
+                {{ book.bookName | uppercase | truncate : 12 }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text authorNameText">
+                {{ book.authorName | uppercase | truncate : 12 }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text priceText">
+                {{ book.money | vatAdded : 8 | currency : "₺" }}
+              </p>
+            </div>
+            <div class="col">
+              <button class="icon-button" (click)="editBook(book.bookId)">
+                <img
+                  src="../../../assets/images/edit.png"
+                  alt="Icon"
+                  class="icon-image"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

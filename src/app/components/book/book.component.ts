@@ -4,6 +4,7 @@ import { Book } from '../../models/entityModels/book';
 import { BookService } from './../../services/book.service';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book',
@@ -15,7 +16,8 @@ export class BookComponent implements OnInit {
     private bookService: BookService,
     private activatedRoute: ActivatedRoute,
     private sharedService: SharedService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastrService: ToastrService
   ) {}
 
   books: Book[] = [];
@@ -69,6 +71,11 @@ export class BookComponent implements OnInit {
   }
 
   addToCart(book: Book) {
-    this.cartService.addToCart(book);
+    console.log(book);
+    if (localStorage.getItem('userName') === book.ownerUserName) {
+      this.toastrService.error('Bu kitap size ait', 'Kitap Sepete Eklenemedi');
+    } else {
+      this.cartService.addToCart(book);
+    }
   }
 }

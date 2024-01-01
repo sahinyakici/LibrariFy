@@ -16,18 +16,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"
+          <a class="nav-link active" aria-current="page" routerLink="myrentals"
             >Kiralamalarım</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Kitaplarım</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Yazarlar</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Türler</a>
+          <a class="nav-link active" aria-current="page" routerLink="mybooks"
+            >Kitaplarım</a
+          >
         </li>
         <li><app-cart-summary></app-cart-summary></li>
       </ul>
@@ -48,9 +44,8 @@
       </div>
       <div class="ml-auto ml-lg-4">
         <ul class="navbar-nav me-auto mb-auto mb-lg-auto">
-          
           <li>
-            <button class="btn-user" type="submit"></button>
+            <button routerLink="/login" class="btn-user" type="submit"></button>
           </li>
         </ul>
       </div>

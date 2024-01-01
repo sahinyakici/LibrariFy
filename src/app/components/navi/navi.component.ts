@@ -12,4 +12,6 @@ export class NaviComponent {
   onFilterTextChange() {
     this.sharedService.setFilterText(this.filterText);
   }
+
+  
 }

@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="./my-rentals.component.css" />
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-grow text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let book of books" class="col">
+        <div class="card" style="width: 18rem">
+          <img
+            src="{{ book.imagePath }}"
+            class="card-img-top picture"
+            alt="..."
+          />
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <p class="card-text ownerNameText">
+                  {{ book.ownerName | uppercase | truncate : 12 }}
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text genreNameText">
+                  {{ book.genreName | uppercase | truncate : 12 }}
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-text bookNameText">
+                {{ book.bookName | uppercase | truncate : 12 }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text authorNameText">
+                {{ book.authorName | uppercase | truncate : 12 }}
+              </p>
+            </div>
+            <div class="col">
+              <p class="card-text priceText">
+                {{ book.money | vatAdded : 8 | currency : "₺" }}
+              </p>
+            </div>
+            <div class="col">
+              <button class="icon-button" (click)="createPopUp()">
+                <img
+                  src="../../../assets/images/cancel.png"
+                  alt="Icon"
+                  class="icon-image"
+                />
+              </button>
+            </div>
+            <div class="modal" tabindex="-1" id="deleteModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Kiralama iptal edilecek</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Kiralamayı iptal etmek ister misiniz?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      (click)="closePopUp()"
+                    >
+                      İptal
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="cancelRental(book)"
+                    >
+                      Kiralamayı sil
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+</div>

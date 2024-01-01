@@ -1,0 +1,87 @@
+<main class="form-signin w-100 m-auto">
+  <form [formGroup]="registerForm">
+    <h1 class="h3 mb-3 fw-normal">Kayıt Ol</h1>
+    <div class="form-floating mb-3">
+      <input
+      formControlName="firstName"
+        type="string"
+        class="form-control"
+        id="firstName"
+        placeholder="firstName"
+      />
+      <label for="firstName">İsminiz</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        formControlName="lastName"
+        type="string"
+        class="form-control"
+        id="lastName"
+        placeholder="lastName"
+      />
+      <label for="lastName">Soyadınız</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        formControlName="username"
+        type="string"
+        class="form-control"
+        id="username"
+        placeholder="name.surname"
+      />
+      <label for="username">Kullanıcı adınız</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        formControlName="email"
+        type="string"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+      />
+      <label for="email">Mailiniz</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+      />
+      <label for="password">Şifreniz</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        formControlName="passwordCheck"
+        type="password"
+        class="form-control"
+        id="passwordCheck"
+        placeholder="passwordCheck"
+      />
+      <label for="passwordCheck">Şifreyi tekrar giriniz</label>
+    </div>
+
+    <button
+      (click)="createAccount()"
+      class="w-100 btn btn-lg btn-register"
+      type="submit"
+    >
+      Kayıt ol
+    </button>
+    <div>Zaten hesabın var mı?</div>
+    <button
+      routerLink="/login"
+      class="w-100 btn btn-lg btn-success"
+      type="submit"
+    >
+      Giriş yap!
+    </button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+  </form>
+</main>

@@ -21,28 +21,28 @@
             <div class="row">
               <div class="col">
                 <p class="card-text ownerNameText">
-                  {{ book.ownerName | uppercase }}
+                  {{ book.ownerName | uppercase | truncate : 12 }}
                 </p>
               </div>
               <div class="col">
                 <p class="card-text genreNameText">
-                  {{ book.genreName | uppercase }}
+                  {{ book.genreName | uppercase | truncate : 12 }}
                 </p>
               </div>
             </div>
             <div class="col">
               <p class="card-text bookNameText">
-                {{ book.bookName | uppercase }}
+                {{ book.bookName | uppercase | truncate : 12 }}
               </p>
             </div>
             <div class="col">
               <p class="card-text authorNameText">
-                {{ book.authorName | uppercase }}
+                {{ book.authorName | uppercase | truncate : 12 }}
               </p>
             </div>
             <div class="col">
               <p class="card-text priceText">
-                {{ book.money | vatAdded : 8 | currency : "₺" }}(KDV dahil)
+                {{ book.money | vatAdded : 8 | currency : "₺" }}
               </p>
             </div>
             <div class="col">

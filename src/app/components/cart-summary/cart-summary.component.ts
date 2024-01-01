@@ -10,7 +10,9 @@ import { Book } from '../../models/entityModels/book';
 })
 export class CartSummaryComponent implements OnInit {
   cartItems: CartItem[] = [];
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService
+  ) {}
   ngOnInit(): void {
     this.getCart();
   }

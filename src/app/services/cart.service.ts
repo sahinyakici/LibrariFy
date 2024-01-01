@@ -3,12 +3,13 @@ import { Book } from '../models/entityModels/book';
 import { CartItems } from '../models/entityModels/cartItems';
 import { ToastrService } from 'ngx-toastr';
 import { CartItem } from '../models/entityModels/cartItem';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  constructor(private toastrService: ToastrService) {}
+  constructor(private toastrService: ToastrService,private sharedService:SharedService) {}
 
   addToCart(book: Book) {
     let item = CartItems.find((c) => c.book.bookId === book.bookId);

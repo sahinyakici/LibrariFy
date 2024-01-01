@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Jockey One";
+  src: url("./assets/fonts/JockeyOne-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("./assets/fonts/Lexend-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Diphylleia";
+  src: url("./assets/fonts/Diphylleia-Regular.ttf") format("truetype");
+  font-weight: bold;
+
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+}

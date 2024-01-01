@@ -6,15 +6,19 @@
   aria-expanded="false"
 >
   <div class="dropdown">
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      {{cartItems.length}}
+      <span class="visually-hidden">unread messages</span>
+    </span>
     <ul class="dropdown-menu">
       <li *ngFor="let cartItem of cartItems" d-flex justify-content-between>
         <div class="d-flex justify-content-between">
           <a class="dropdown-item">
             <span class="badge bg-success">{{
-              cartItem.book.money | currency : "₺"
+              cartItem.book.money | vatAdded : 8 | currency : "₺"
             }}</span>
 
-            {{ cartItem.book.bookName | uppercase }}
+            {{ cartItem.book.bookName | uppercase | truncate : 12 }}
 
             <span
               (click)="removeFromCart(cartItem.book)"
@@ -24,7 +28,7 @@
           </a>
         </div>
       </li>
-      <li class="col-12 text-center">
+      <li routerLink="cart" class="col-12 text-center">
         <a class="dropdown-item"></a>Sepete git
       </li>
     </ul>

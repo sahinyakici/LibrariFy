@@ -1,0 +1,183 @@
+<div *ngIf="editBookProgress" class="spinner-border text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Kitap ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="editBookForm">
+          <div class="form-group">
+            <div class="mb-3">
+              <label for="bookName">Kitap adı</label>
+              <input
+                type="text"
+                id="bookName"
+                formControlName="bookName"
+                class="form-control"
+                placeholder="Kitap adı giriniz."
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="genreName"> Tür adı</label>
+            <div class="form-group">
+              <select
+                class="form-select"
+                formControlName="genreName"
+                (change)="genreSelectionControl($event)"
+              >
+                <option [value]="genre.genreName" *ngFor="let genre of genres">
+                  {{ genre.genreName }}
+                </option>
+                <option>Tür ekle</option>
+              </select>
+            </div>
+            <div class="mt-2">
+              <div *ngIf="enterTheGenre" class="form-group">
+                <input
+                  type="text"
+                  id="genreName"
+                  formControlName="genreName"
+                  class="form-control"
+                  placeholder="Kitap türünü giriniz."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="authorName"> Yazar adı</label>
+            <div class="form-group">
+              <select
+                class="form-select"
+                formControlName="authorName"
+                (change)="authorSelectionControl($event)"
+              >
+                <option *ngFor="let author of authors">
+                  {{ author.authorName }}
+                </option>
+                <option>Yazar Ekle</option>
+              </select>
+            </div>
+            <div *ngIf="enterTheAuthor" class="form-group">
+              <input
+                type="text"
+                id="authorName"
+                formControlName="authorName"
+                class="form-control"
+                placeholder="Yazar adı"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="location"> Kitap lokasyonu</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="location"
+                formControlName="location"
+                class="form-control"
+                placeholder="Kitabın yerini giriniz."
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="pageSize">Sayfa sayısı</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="pageSize"
+                formControlName="pageSize"
+                class="form-control"
+                placeholder="Sayfa sayısını giriniz."
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="money"> Kitap fiyatı</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="money"
+                formControlName="money"
+                class="form-control"
+                placeholder="Kitap fiyatını giriniz"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="imagePath">Kitap Resmi</label>
+            <div class="input-group">
+              <input
+                type="file"
+                id="imagePath"
+                formControlName="imagePath"
+                (change)="onFileChange($event)"
+                class="form-control"
+              />
+              <button
+                type="button"
+                (click)="resetPicture()"
+                [class]="pictureResetClassSelection()"
+              >
+                Secimi iptal et
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <button class="btn btn-fill btn-primary" (click)="saveBook()">
+                Kitabı güncelle
+              </button>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <button class="btn btn-fill btn-danger" (click)="createPopUp()">
+                Kitabı sil
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" id="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Kitap silinecek</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Kitabın silinmesini onaylıyor musunuz?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="closePopUp()"
+        >
+          İptal
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="deleteBook(book.bookId)"
+        >
+          Kitabı sil
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

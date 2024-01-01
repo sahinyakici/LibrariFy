@@ -7,6 +7,7 @@ export interface Book {
   location: string;
   pageSize: number;
   rentStatus: boolean;
-  money:number;
-  imagePath:string;
+  money: number;
+  imagePath: string;
+  ownerUserName: string;
 }
